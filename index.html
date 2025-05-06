@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Bang AUl Store</title>
     <style>
         * {
@@ -18,12 +18,14 @@
         body {
             background-color: #f5f6fa;
             color: #2f3542;
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 100%;
             padding: 15px;
+            margin: 0 auto;
         }
         
         header {
@@ -34,12 +36,15 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            width: 100%;
         }
         
         .header-content {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 15px;
         }
         
         .header-icon {
@@ -48,16 +53,33 @@
         }
         
         header h1 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             text-align: center;
             margin: 0;
+            word-break: break-word;
+        }
+        
+        .search-container {
+            padding: 0 15px;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 100%;
         }
         
         .game-list {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 15px;
             margin-top: 20px;
+            width: 100%;
         }
         
         .game-item {
@@ -78,36 +100,40 @@
         }
         
         .game-image {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
             border-radius: 8px;
             object-fit: cover;
             margin-right: 15px;
-            background-color: #f0f0f0; /* Fallback color */
+            background-color: #f0f0f0;
         }
         
         .game-name {
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            word-break: break-word;
         }
         
         .products-section {
             display: none;
             margin-top: 30px;
+            width: 100%;
         }
         
         .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #4834d4;
+            word-break: break-word;
         }
         
         .product-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            position: relative;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            width: 100%;
         }
         
         .product-card {
@@ -116,6 +142,7 @@
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
+            width: 100%;
         }
         
         .product-card:hover {
@@ -124,32 +151,33 @@
         
         .product-image {
             width: 100%;
-            height: 150px;
+            height: 120px;
             object-fit: cover;
-            background-color: #f0f0f0; /* Fallback color */
+            background-color: #f0f0f0;
         }
         
         .product-info {
-            padding: 15px;
+            padding: 12px;
         }
         
         .product-name {
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             margin-bottom: 5px;
+            word-break: break-word;
         }
         
         .product-price {
             color: #4834d4;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            margin-bottom: 12px;
         }
         
         .buy-btn {
             display: block;
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             background-color: #4834d4;
             color: white;
             border: none;
@@ -157,6 +185,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.2s;
+            font-size: 0.9rem;
         }
         
         .buy-btn:hover {
@@ -175,43 +204,45 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            padding: 15px;
         }
         
         .checkout-form {
             background-color: white;
             border-radius: 10px;
-            padding: 20px;
-            width: 90%;
+            padding: 15px;
+            width: 100%;
             max-width: 500px;
             max-height: 90vh;
             overflow-y: auto;
         }
         
         .checkout-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
             text-align: center;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 1px solid #ddd;
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            font-size: 0.9rem;
         }
         
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
         .quantity-control {
@@ -244,27 +275,28 @@
         
         .total-price {
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #4834d4;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         .payment-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-top: 5px;
         }
         
         .payment-option {
-            flex: 1;
-            min-width: 80px;
+            flex: 1 0 calc(50% - 8px);
+            min-width: calc(50% - 8px);
             border: 1px solid #ddd;
             border-radius: 5px;
-            padding: 10px;
+            padding: 8px;
             text-align: center;
             cursor: pointer;
             transition: all 0.2s;
+            font-size: 0.9rem;
         }
         
         .payment-option.selected {
@@ -280,17 +312,18 @@
         .btn-group {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         .btn-cancel,
         .btn-submit {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
+            font-size: 0.9rem;
         }
         
         .btn-cancel {
@@ -304,13 +337,78 @@
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            .game-item {
-                width: 100%;
+        @media (min-width: 480px) {
+            .container {
+                max-width: 480px;
+            }
+            
+            .game-image {
+                width: 70px;
+                height: 70px;
+                min-width: 70px;
             }
             
             .product-list {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+            
+            .product-image {
+                height: 140px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .game-image {
+                width: 80px;
+                height: 80px;
+                min-width: 80px;
+            }
+            
+            .game-name {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .product-list {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .product-name {
+                font-size: 1rem;
+            }
+            
+            .payment-option {
+                flex: 1 0 calc(25% - 8px);
+                min-width: calc(25% - 8px);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                max-width: 992px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
             }
         }
     </style>
@@ -321,14 +419,12 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="header-icon">🎮</div>
-                <h1>Bang Aul Store</h1>
-            </div>
+        <div class="header-content">
+            <div class="header-icon">🎮</div>
+            <h1>Bang Aul Store</h1>
         </div>
-        <div style="margin-top: 20px;">
-            <input type="text" id="searchInput" placeholder="Cari game..." style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px;">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari game...">
         </div>
     </header>
     
@@ -519,6 +615,9 @@
         
         // Fungsi untuk format angka dengan titik sebagai pemisah ribuan
         function numberWithCommas(x) {
+            if (typeof x !== 'number') {
+                x = parseInt(x.toString().replace(/\./g, ''));
+            }
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
         
@@ -558,9 +657,12 @@
         }
         
         function openCheckout(itemName, price) {
-            currentPrice = parseInt(price.replace(/\./g, ''));
+            // Handle price format (remove dots if present)
+            const priceStr = price.toString().replace(/\./g, '');
+            currentPrice = parseInt(priceStr) || 0;
+            
             document.getElementById('itemName').value = itemName;
-            document.getElementById('itemPrice').value = 'Rp ' + numberWithCommas(price);
+            document.getElementById('itemPrice').value = 'Rp ' + numberWithCommas(priceStr);
             document.getElementById('quantity').value = 1;
             calculateTotal();
             document.getElementById('checkoutOverlay').style.display = 'flex';
@@ -584,7 +686,7 @@
         }
         
         function calculateTotal() {
-            const quantity = parseInt(document.getElementById('quantity').value);
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
             const total = currentPrice * quantity;
             document.getElementById('totalPrice').textContent = 'Rp ' + numberWithCommas(total);
         }
