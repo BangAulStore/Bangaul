@@ -712,51 +712,40 @@
             document.getElementById('paymentMethod').value = '';
         }
         
-        function submitOrder() {
-            const itemName = document.getElementById('itemName').value;
-            const quantity = document.getElementById('quantity').value;
-            const totalPrice = document.getElementById('totalPrice').textContent;
-            const robloxName = document.getElementById('robloxName').value;
-            const paymentMethod = document.getElementById('paymentMethod').value;
-            
-            if (!robloxName) {
-                alert('Mohon masukkan nama/ID game Anda!');
-                return;
-            }
-            
-            if (!paymentMethod) {
-                alert('Mohon pilih metode pembayaran!');
-                return;
-            }
-            
-            // Construct WhatsApp message
-            const message = `Halo, saya ingin membeli:%0A*${itemName}*%0A%0A*Detail Pesanan*%0A- Jumlah: ${quantity}%0A- Harga Satuan: ${document.getElementById('itemPrice').value}%0A- Total Pembayaran: ${totalPrice}%0A- Nama Roblox: ${robloxName}%0A- Pembayaran: ${paymentMethod}`;
-            
-            // Create a temporary link to handle the WhatsApp redirection
-            const whatsappLink = document.createElement('a');
-            whatsappLink.href = `https://wa.me/6285248895629?text=${message}`;
-            whatsappLink.target = '_blank';
-            
-            // Trigger the click event
-            document.body.appendChild(whatsappLink);
-            whatsappLink.click();
-            document.body.removeChild(whatsappLink);
-            
-            // Close overlay
-            closeCheckout();
+      function submitOrder() {
+    // ... validasi form sebelumnya ...
+
+    const phoneNumber = '6285248895629'; // Format internasional tanpa '+'
+    const message = `Halo Bang Aul...`; // Pesan Anda
+
+    // 1. Coba buka langsung via WhatsApp Deep Link (untuk mobile)
+    window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    
+    // 2. Fallback: Jika setelah 1 detik belum pindah aplikasi
+    setTimeout(() => {
+        // 2a. Coba buka via API WhatsApp (untuk Android/iPhone)
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.open(`intent://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}#Intent;scheme=whatsapp;package=com.whatsapp;action=android.intent.action.SEND;end`, '_blank');
+        } 
+        // 2b. Untuk desktop/lainnya
+        else {
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
-        
-        // Inisialisasi saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', function() {
-            setupSearch();
-            
-            // Tambahkan fallback untuk gambar yang error
-            document.querySelectorAll('img').forEach(img => {
-                img.onerror = function() {
-                    this.style.display = 'none';
-                };
-            });
-        });
+    }, 1000);
+
+    // 3. Ultimate Fallback (tampilkan link manual)
+    setTimeout(() => {
+        const fallbackDiv = document.createElement('div');
+        fallbackDiv.innerHTML = `
+            <p style="color:red;">Jika WhatsApp tidak terbuka otomatis:</p>
+            <a href="https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}" 
+               style="color:white; background:#25D366; padding:10px; border-radius:5px; text-decoration:none;">
+               Klik untuk Chat WhatsApp
+            </a>
+        `;
+        document.body.appendChild(fallbackDiv);
+    }, 3000);
+}
     </script>
 </body>
 </html>
