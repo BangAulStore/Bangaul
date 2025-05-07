@@ -613,11 +613,6 @@
         // Inisialisasi variabel dan fungsi di awal untuk menghindari hoisting issues
         let currentPrice = 0;
         
-        // Fungsi untuk mendeteksi perangkat mobile
-        function isMobileDevice() {
-            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-        }
-        
         // Fungsi untuk format angka dengan titik sebagai pemisah ribuan
         function numberWithCommas(x) {
             if (typeof x !== 'number') {
@@ -737,35 +732,15 @@
             // Construct WhatsApp message
             const message = `Halo, saya ingin membeli:%0A*${itemName}*%0A%0A*Detail Pesanan*%0A- Jumlah: ${quantity}%0A- Harga Satuan: ${document.getElementById('itemPrice').value}%0A- Total Pembayaran: ${totalPrice}%0A- Nama Roblox: ${robloxName}%0A- Pembayaran: ${paymentMethod}`;
             
-            // Nomor WhatsApp
-            const phoneNumber = '6285248895629';
+            // Create a temporary link to handle the WhatsApp redirection
+            const whatsappLink = document.createElement('a');
+            whatsappLink.href = `https://wa.me/6285248895629?text=${message}`;
+            whatsappLink.target = '_blank';
             
-            // URL WhatsApp untuk mobile dan desktop
-            let whatsappUrl;
-            
-            if (isMobileDevice()) {
-                // Untuk perangkat mobile
-                whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-            } else {
-                // Untuk desktop - menggunakan web.whatsapp.com
-                whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-                
-                // Fallback untuk browser yang tidak mendukung web.whatsapp.com langsung
-                // Buka tab baru dengan web.whatsapp.com
-                const newWindow = window.open(whatsappUrl, '_blank');
-                
-                // Jika popup diblokir, beri petunjuk kepada pengguna
-                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-                    alert('Silakan buka WhatsApp dan kirim pesan ke nomor berikut:\n\n' + 
-                          phoneNumber + '\n\nDengan pesan:\n\n' + 
-                          decodeURIComponent(message.replace(/%0A/g, '\n')));
-                }
-                
-                return; // Keluar dari fungsi setelah membuka tab baru
-            }
-            
-            // Untuk mobile, buka langsung WhatsApp
-            window.location.href = whatsappUrl;
+            // Trigger the click event
+            document.body.appendChild(whatsappLink);
+            whatsappLink.click();
+            document.body.removeChild(whatsappLink);
             
             // Close overlay
             closeCheckout();
