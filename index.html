@@ -143,6 +143,7 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
             width: 100%;
+            position: relative;
         }
         
         .product-card:hover {
@@ -172,6 +173,32 @@
             font-weight: bold;
             font-size: 1rem;
             margin-bottom: 12px;
+        }
+        
+        .wholesale-price {
+            color: #e84118;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .min-order {
+            color: #e84118;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .wholesale-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e84118;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
         }
         
         .buy-btn {
@@ -413,6 +440,7 @@
         }
     </style>
     <!-- Preload important images -->
+    <link rel="preload" href="https://i.ibb.co.com/WpYkxqPQ/Desain-tanpa-judul-34.jpg" as="image">
     <link rel="preload" href="https://i.ibb.co.com/TMCnFfTd/Desain-tanpa-judul-19.png" as="image">
     <link rel="preload" href="https://i.ibb.co.com/0P6N4tR/Desain-tanpa-judul-25.jpg" as="image">
     <link rel="preload" href="https://i.ibb.co.com/6JpvR2Qy/Desain-tanpa-judul-24.jpg" as="image">
@@ -430,8 +458,7 @@
     
     <div class="container">
         <div class="game-list" id="gameList">
-
-<div class="game-item" onclick="toggleProducts('grow-a-garden')">
+            <div class="game-item" onclick="toggleProducts('grow-a-garden')">
                 <img src="https://i.ibb.co.com/WpYkxqPQ/Desain-tanpa-judul-34.jpg" alt="Grow A Garden" class="game-image" loading="lazy">
                 <div class="game-name">Grow A Garden</div>
             </div>
@@ -450,11 +477,173 @@
                 <img src="https://i.ibb.co.com/6JpvR2Qy/Desain-tanpa-judul-24.jpg" alt="Toilet Tower Defense" class="game-image" loading="lazy">
                 <div class="game-name">Toilet Tower Defense</div>
             </div>
+        </div> <!-- Penutup game-list -->
 
+        <!-- Produk-produk Grow A Garden -->
+        <div class="products-section" id="grow-a-garden" style="display: none;">
+            <h2 class="section-title">Produk Grow A Garden</h2>
+            <div class="product-list">
+                <div class="product-card">
+                    <img src="https://i.ibb.co.com/vvCNMX9v/Desain-tanpa-judul-36.jpg" alt="Coin" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">1.000.000 Coin</div>
+                        <div class="product-price">Rp 500</div>
+                        <button class="buy-btn" onclick="openCheckout('1.000.000 Coin', '500')">Beli Sekarang</button>
+                    </div>
+                </div>
 
+                <div class="product-card">
+                    <img src="https://i.ibb.co.com/vvCNMX9v/Desain-tanpa-judul-36.jpg" alt="Coin" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">239B Coin</div>
+                        <div class="product-price">Rp 50.000</div>
+                        <button class="buy-btn" onclick="openCheckout('239B Coin', '50.000')">Beli Sekarang</button>
+                    </div>
+                </div>
 
+                <div class="product-card">
+                    <img src="https://i.ibb.co.com/vvCNMX9v/Desain-tanpa-judul-36.jpg" alt="Coin" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">1.1 Triliun Coin</div>
+                        <div class="product-price">Rp 200.000</div>
+                        <button class="buy-btn" onclick="openCheckout('1.1 Triliun Coin', '200.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3rIeDF9.jpg" alt="Kiwi" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Kiwi</div>
+                        <div class="product-price">Rp 5.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Kiwi', '5.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3rznngR.jpg" alt="Frog" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Frog</div>
+                        <div class="product-price">Rp 15.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Frog', '15.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3gz1m1s.jpg" alt="Giant Ant" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Giant Ant</div>
+                        <div class="product-price">Rp 15.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Giant Ant', '15.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/38tDPDb.jpg" alt="Owl" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Owl</div>
+                        <div class="product-price">Rp 20.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Owl', '20.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3rza021.jpg" alt="Echo Frog" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Echo Frog</div>
+                        <div class="product-price">Rp 25.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Echo Frog', '25.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/38D344a.jpg" alt="Mantis" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Mantis</div>
+                        <div class="product-price">Rp 25.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Mantis', '25.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3rANyve.jpg" alt="Night Owl" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Night Owl</div>
+                        <div class="product-price">Rp 30.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Night Owl', '30.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3PGV6fs.jpg" alt="Chicken Zombie" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Chicken Zombie</div>
+                        <div class="product-price">Rp 40.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Chicken Zombie', '40.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3UujPDP.jpg" alt="Polar Bear" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Polar Bear</div>
+                        <div class="product-price">Rp 30.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Polar Bear', '30.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/3rzg3lI.jpg" alt="Panda" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Panda</div>
+                        <div class="product-price">Rp 30.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Panda', '30.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://i.ibb.co.com/0jWM9MNB/Desain-tanpa-judul-35.jpg" alt="Dragonfly" class="product-image" loading="lazy">
+                    <div class="wholesale-badge">GROSIR</div>
+                    <div class="product-info">
+                        <div class="product-name">Dragonfly</div>
+                        <div class="product-price">Rp 120.000</div>
+                        <div class="wholesale-price">Rp 90.000/unit</div>
+                        <div class="min-order">Min. beli 2</div>
+                        <button class="buy-btn" onclick="openCheckout('Dragonfly', '120000', true, '90000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/348EGG2.jpg" alt="Titan Cow" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Titan Cow</div>
+                        <div class="product-price">Rp 280.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Titan Cow', '280.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/348zJTX.jpg" alt="Titan Echo Frog" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">Titan Echo Frog</div>
+                        <div class="product-price">Rp 300.000</div>
+                        <button class="buy-btn" onclick="openCheckout('Titan Echo Frog', '300.000')">Beli Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://iili.io/38lIZxV.jpg" alt="Raccoon" class="product-image" loading="lazy">
+                    <div class="wholesale-badge">GROSIR</div>
+                    <div class="product-info">
+                        <div class="product-name">Raccoon</div>
+                        <div class="product-price">Rp 120.000</div>
+                        <div class="wholesale-price">Rp 90.000/unit</div>
+                        <div class="min-order">Min. beli 2</div>
+                        <button class="buy-btn" onclick="openCheckout('Raccoon', '120000', true, '90000')">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+
         <!-- Produk-produk Bubble Gum Simulator Infinity -->
         <div class="products-section" id="bubble-gum-simulator-infinity" style="display: none;">
             <h2 class="section-title">Produk Bubble Gum Simulator Infinity</h2>
@@ -483,7 +672,6 @@
         <div class="products-section" id="arm-wrestle-simulator" style="display: none;">
             <h2 class="section-title">Produk Arm Wrestle Simulator</h2>
             <div class="product-list">
-
                 <div class="product-card">
                     <img src="https://i.ibb.co.com/fYZf1SzW/Desain-tanpa-judul-26.jpg" alt="100 Token" class="product-image" loading="lazy">
                     <div class="product-info">
@@ -502,7 +690,7 @@
                     </div>
                 </div>
 
-                    <div class="product-card">
+                <div class="product-card">
                     <img src="https://i.ibb.co.com/ZRfBGqsx/Desain-tanpa-judul-32.jpg" alt="Pet 600m" class="product-image" loading="lazy">
                     <div class="product-info">
                         <div class="product-name">Pet 600m</div>
@@ -529,7 +717,7 @@
                     </div>
                 </div>
 
-  <div class="product-card">
+                <div class="product-card">
                     <img src="https://i.ibb.co.com/5XCDM8Qp/Desain-tanpa-judul-31.jpg" alt="Pet 50b" class="product-image" loading="lazy">
                     <div class="product-info">
                         <div class="product-name">Pet 50b</div>
@@ -537,258 +725,95 @@
                         <button class="buy-btn" onclick="openCheckout('Pet 50b Arm Wrestle Simulator', '50.000')">Beli Sekarang</button>
                     </div>
                 </div>
-
             </div>
         </div>
 
-      <!-- Produk-produk Toilet Tower Defense -->
-<div class="products-section" id="toilet-tower-defense" style="display: none;">
-    <h2 class="section-title">Produk Toilet Tower Defense</h2>
-    <div class="product-list">
-        <div class="product-card">
-            <img src="https://i.ibb.co.com/PGNQN30M/Desain-tanpa-judul-27.jpg" alt="1.000 Gems" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">1.000 Gems</div>
-                <div class="product-price">Rp 450</div>
-                <button class="buy-btn" onclick="openCheckout('1.000 Gems Toilet Tower Defense', '450')">Beli Sekarang</button>
-            </div>
-        </div>
-        
-        <div class="product-card">
-            <img src="https://i.ibb.co.com/PGNQN30M/Desain-tanpa-judul-27.jpg" alt="10.000 Gems" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">10.000 Gems</div>
-                <div class="product-price">Rp 4.500</div>
-                <button class="buy-btn" onclick="openCheckout('10.000 Gems Toilet Tower Defense', '4500')">Beli Sekarang</button>
-            </div>
-        </div>
-    </div>
-</div> <!-- Ini adalah penutup yang benar untuk toilet-tower-defense -->
-
-<!-- Produk-produk Grow A Garden -->
-<div class="products-section" id="grow-a-garden" style="display: none;">
-    <h2 class="section-title">Produk Grow A Garden</h2>
-    <div class="product-list">
-        
-<div class="product-card">
-            <img src="https://i.ibb.co.com/vvCNMX9v/Desain-tanpa-judul-36.jpg" alt="Coin" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">1.000.000 Coin</div>
-                <div class="product-price">Rp 500</div>
-                <button class="buy-btn" onclick="openCheckout('1.000.000 Coin', '500')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://i.ibb.co.com/vvCNMX9v/Desain-tanpa-judul-36.jpg" alt="Coin" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">239B Coin</div>
-                <div class="product-price">Rp 50.000</div>
-                <button class="buy-btn" onclick="openCheckout('239B Coin', '50.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://i.ibb.co.com/vvCNMX9v/Desain-tanpa-judul-36.jpg" alt="Coin" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">1.1 Triliun Coin</div>
-                <div class="product-price">Rp 200.000</div>
-                <button class="buy-btn" onclick="openCheckout('1.1 Triliun Coin', '200.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/3rIeDF9.jpg" alt="Kiwi" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Kiwi</div>
-                <div class="product-price">Rp 5.000 </div>
-                <button class="buy-btn" onclick="openCheckout('Kiwi', '5.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/3rznngR.jpg" alt="Frog" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Frog</div>
-                <div class="product-price">Rp 15.000 </div>
-                <button class="buy-btn" onclick="openCheckout('Frog', '10.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-
-<div class="product-card">
-            <img src="https://iili.io/3gz1m1s.jpg" alt="Coin" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Giant Ant</div>
-                <div class="product-price">Rp 15.000</div>
-                <button class="buy-btn" onclick="openCheckout('Giant Ant', '15.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/38tDPDb.jpg" alt="Owl" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Owl</div>
-                <div class="product-price">Rp 20.000</div>
-                <button class="buy-btn" onclick="openCheckout('Owl', '20.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/3rza021.jpg" alt="Echo Frog" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Echo Frog</div>
-                <div class="product-price">Rp 25.000 </div>
-                <button class="buy-btn" onclick="openCheckout('Echo Frog', '25.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/38D344a.jpg" alt="Mantis" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Mantis</div>
-                <div class="product-price">Rp 25.000</div>
-                <button class="buy-btn" onclick="openCheckout('Mantis', '25.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/3rANyve.jpg" alt="Night Owl" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Night Owl</div>
-                <div class="product-price">Rp 30.000</div>
-                <button class="buy-btn" onclick="openCheckout('Night Owl', '30.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/3PGV6fs.jpg" alt="Chicken Zombie" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Chicken Zombie</div>
-                <div class="product-price">Rp 40.000</div>
-                <button class="buy-btn" onclick="openCheckout('Chicken Zombie', '40.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-
-<div class="product-card">
-            <img src="https://iili.io/3UujPDP.jpg" alt="Polar Bear" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Polar Bear</div>
-                <div class="product-price">Rp 30.000</div>
-                <button class="buy-btn" onclick="openCheckout('Polar Bear', '30.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/3rzg3lI.jpg" alt="Panda" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Panda</div>
-                <div class="product-price">Rp 30.000</div>
-                <button class="buy-btn" onclick="openCheckout('Panda', '30.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-
-<div class="product-card">
-            <img src="https://i.ibb.co.com/0jWM9MNB/Desain-tanpa-judul-35.jpg" alt="Dragonfly" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Dragonfly</div>
-                <div class="product-price">Rp 120.000</div>
-                <button class="buy-btn" onclick="openCheckout('Dragonfly', '120.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/348EGG2.jpg" alt="Titan Cow" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Titan Cow</div>
-                <div class="product-price">Rp 280.000</div>
-                <button class="buy-btn" onclick="openCheckout('Titan Cow', '280.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-<div class="product-card">
-            <img src="https://iili.io/348zJTX.jpg" alt="Titan Echo Frog" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Titan Echo Frog</div>
-                <div class="product-price">Rp 300.000</div>
-                <button class="buy-btn" onclick="openCheckout('Titan Echo Frog', '300.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-
-<div class="product-card">
-            <img src="https://iili.io/38lIZxV.jpg" alt="Raccoon" class="product-image" loading="lazy">
-            <div class="product-info">
-                <div class="product-name">Raccoon</div>
-                <div class="product-price">Rp 120.000</div>
-                <button class="buy-btn" onclick="openCheckout('Raccoon', '120.000')">Beli Sekarang</button>
-            </div>
-        </div>
-
-
-    </div>
-</div>
-
-
-
-
-    <div class="overlay" id="checkoutOverlay">
-        <div class="checkout-form">
-            <h2 class="checkout-title">Konfirmasi Pembelian</h2>
-            <div class="form-group">
-                <label>Item</label>
-                <input type="text" id="itemName" readonly>
-            </div>
-            <div class="form-group">
-                <label>Harga Satuan</label>
-                <input type="text" id="itemPrice" readonly>
-            </div>
-            <div class="form-group">
-                <label>Jumlah</label>
-                <div class="quantity-control">
-                    <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
-                    <input type="number" id="quantity" class="quantity-input" value="1" min="1" onchange="calculateTotal()">
-                    <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Total Pembayaran</label>
-                <div class="total-price" id="totalPrice">Rp 0</div>
-            </div>
-            <div class="form-group">
-                <label>Nama Roblox Kamu</label>
-                <input type="text" id="robloxName" placeholder="Masukkan Nama Roblox Kamu">
-            </div>
-            <div class="form-group">
-                <label>Metode Pembayaran</label>
-                <div class="payment-options">
-                    <div class="payment-option" onclick="selectPayment('DANA')">
-                        <div>DANA</div>
-                    </div>
-                    <div class="payment-option" onclick="selectPayment('OVO')">
-                        <div>OVO</div>
-                    </div>
-                    <div class="payment-option" onclick="selectPayment('GOPAY')">
-                        <div>GOPAY</div>
-                    </div>
-                    <div class="payment-option" onclick="selectPayment('QRIS')">
-                        <div>QRIS</div>
+        <!-- Produk-produk Toilet Tower Defense -->
+        <div class="products-section" id="toilet-tower-defense" style="display: none;">
+            <h2 class="section-title">Produk Toilet Tower Defense</h2>
+            <div class="product-list">
+                <div class="product-card">
+                    <img src="https://i.ibb.co.com/PGNQN30M/Desain-tanpa-judul-27.jpg" alt="1.000 Gems" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">1.000 Gems</div>
+                        <div class="product-price">Rp 450</div>
+                        <button class="buy-btn" onclick="openCheckout('1.000 Gems Toilet Tower Defense', '450')">Beli Sekarang</button>
                     </div>
                 </div>
-                <input type="hidden" id="paymentMethod" value="">
-            </div>
-            <div class="btn-group">
-                <button class="btn-cancel" onclick="closeCheckout()">Batal</button>
-                <button class="btn-submit" onclick="submitOrder()">Konfirmasi via WhatsApp</button>
+                
+                <div class="product-card">
+                    <img src="https://i.ibb.co.com/PGNQN30M/Desain-tanpa-judul-27.jpg" alt="10.000 Gems" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-name">10.000 Gems</div>
+                        <div class="product-price">Rp 4.500</div>
+                        <button class="buy-btn" onclick="openCheckout('10.000 Gems Toilet Tower Defense', '4500')">Beli Sekarang</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="overlay" id="checkoutOverlay">
+            <div class="checkout-form">
+                <h2 class="checkout-title">Konfirmasi Pembelian</h2>
+                <div class="form-group">
+                    <label>Item</label>
+                    <input type="text" id="itemName" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Harga Satuan</label>
+                    <input type="text" id="itemPrice" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah</label>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                        <input type="number" id="quantity" class="quantity-input" value="1" min="1" onchange="calculateTotal()">
+                        <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                    </div>
+                    <div id="wholesaleNote" style="display: none; color: #e84118; font-size: 0.8rem; margin-top: 5px;">
+                        *Harga grosir (Rp <span id="wholesalePrice"></span>/unit) berlaku untuk pembelian minimal 2
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Total Pembayaran</label>
+                    <div class="total-price" id="totalPrice">Rp 0</div>
+                </div>
+                <div class="form-group">
+                    <label>Nama Roblox Kamu</label>
+                    <input type="text" id="robloxName" placeholder="Masukkan Nama Roblox Kamu">
+                </div>
+                <div class="form-group">
+                    <label>Metode Pembayaran</label>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPayment('DANA')">
+                            <div>DANA</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('OVO')">
+                            <div>OVO</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('GOPAY')">
+                            <div>GOPAY</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('QRIS')">
+                            <div>QRIS</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="paymentMethod" value="">
+                </div>
+                <div class="btn-group">
+                    <button class="btn-cancel" onclick="closeCheckout()">Batal</button>
+                    <button class="btn-submit" onclick="submitOrder()">Konfirmasi via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Penutup container -->
     
     <script>
         // Inisialisasi variabel dan fungsi di awal untuk menghindari hoisting issues
         let currentPrice = 0;
+        let isWholesaleItem = false;
+        let wholesalePrice = 0;
+        let minWholesaleQty = 2;
         
         // Fungsi untuk format angka dengan titik sebagai pemisah ribuan
         function numberWithCommas(x) {
@@ -833,14 +858,26 @@
             });
         }
         
-        function openCheckout(itemName, price) {
+        function openCheckout(itemName, price, isWholesale = false, wholesalePricePerUnit = 0) {
             // Handle price format (remove dots if present)
             const priceStr = price.toString().replace(/\./g, '');
             currentPrice = parseInt(priceStr) || 0;
+            isWholesaleItem = isWholesale;
+            wholesalePrice = parseInt(wholesalePricePerUnit) || 0;
             
             document.getElementById('itemName').value = itemName;
             document.getElementById('itemPrice').value = 'Rp ' + numberWithCommas(priceStr);
             document.getElementById('quantity').value = 1;
+            
+            // Tampilkan catatan grosir jika item ini memiliki harga grosir
+            const wholesaleNote = document.getElementById('wholesaleNote');
+            if (isWholesaleItem) {
+                wholesaleNote.style.display = 'block';
+                document.getElementById('wholesalePrice').textContent = numberWithCommas(wholesalePrice);
+            } else {
+                wholesaleNote.style.display = 'none';
+            }
+            
             calculateTotal();
             document.getElementById('checkoutOverlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -852,6 +889,8 @@
             // Reset form
             document.getElementById('robloxName').value = '';
             resetPaymentOptions();
+            isWholesaleItem = false;
+            wholesalePrice = 0;
         }
         
         function changeQuantity(change) {
@@ -864,7 +903,17 @@
         
         function calculateTotal() {
             const quantity = parseInt(document.getElementById('quantity').value) || 1;
-            const total = currentPrice * quantity;
+            let unitPrice = currentPrice;
+            
+            // Jika item ini memiliki harga grosir dan jumlah memenuhi minimum
+            if (isWholesaleItem && quantity >= minWholesaleQty) {
+                unitPrice = wholesalePrice;
+                document.getElementById('itemPrice').value = 'Rp ' + numberWithCommas(wholesalePrice) + ' (grosir)';
+            } else {
+                document.getElementById('itemPrice').value = 'Rp ' + numberWithCommas(currentPrice);
+            }
+            
+            const total = unitPrice * quantity;
             document.getElementById('totalPrice').textContent = 'Rp ' + numberWithCommas(total);
         }
         
